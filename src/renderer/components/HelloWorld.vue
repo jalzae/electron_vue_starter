@@ -1,29 +1,34 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps({
-  msg: String,
+<script lang="ts">
+import { defineComponent } from 'vue'
+import * as store from '../store'
+export default defineComponent({
+  setup() {
+    const counter = store.useCounter()
+    return {
+      counter
+    }
+  },
+  components: {},
+  data() {
+    return {}
+  },
+  methods: {},
+  mounted() { },
+  computed: {
+    count() {
+      return this.counter.count
+    }
+  },
+  watch: {},
+  created() { },
 })
-
-const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+    <h1>Counter App</h1>
+    <button type="button" @click="counter.count++">count is {{ count }}</button>
   </div>
-  <p>
-    Install
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
 <style scoped>
