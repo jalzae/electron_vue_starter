@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain, session} from 'electron';
+import {app, BrowserWindow, ipcMain, session,Menu} from 'electron';
 import {join} from 'path';
 
 function createWindow () {
@@ -11,7 +11,10 @@ function createWindow () {
       contextIsolation: true,
     }
   });
+  
 
+  Menu.setApplicationMenu(null);
+  
   if (process.env.NODE_ENV === 'development') {
     const rendererPort = process.argv[2];
     mainWindow.loadURL(`http://localhost:${rendererPort}`);
