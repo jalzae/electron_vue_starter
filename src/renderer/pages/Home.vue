@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Test Router</h1>
+    <h1 class="text-red-500 text-center">Test Router</h1>
     <ul>
       <li><router-link to="/main">Main</router-link></li>
     </ul>
