@@ -65,18 +65,23 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
-<script lang='ts'>
-import { defineComponent,computed } from 'vue'
+<script lang="ts">
+import { defineComponent, computed } from "vue";
+import { useRouter } from "vue-router";
 export default defineComponent({
-  
+  setup() {
+    const router = useRouter();
+    return {
+      router,
+    };
+  },
   mixins: [],
   components: {},
   data() {
     return {
-    forms: { username: "", password: "", role: 2 },
+      forms: { username: "", password: "", role: 2 },
       error_message: "",
       form: [
         {
@@ -87,12 +92,21 @@ export default defineComponent({
           model: "password",
           validation: ["required", "noSpace"],
         },
-      ],}
+      ],
+    };
   },
-  methods: {},
-  mounted() { },
+  methods: {
+    submit_form() {
+      try {
+        this.router.push("/main");
+      } catch (err) {
+      } finally {
+      }
+    },
+  },
+  mounted() {},
   computed: {},
   watch: {},
-  created() { },
-})
+  created() {},
+});
 </script>
